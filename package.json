@@ -1,0 +1,11 @@
+{
+  "name": "tdd-practice",
+  "version": "1.0.0",
+  "description": "TDD Practice Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC"
+}

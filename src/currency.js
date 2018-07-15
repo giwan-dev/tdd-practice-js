@@ -8,5 +8,6 @@ export class Dollar {
   }
 
   equals(object) {
+    return this.amount === object.amount;
   }
 }

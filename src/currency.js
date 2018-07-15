@@ -1,13 +1,13 @@
 export class Dollar {
   constructor(amount) {
-    this.amount = amount;
+    this._amount = amount; // private member convention. 실제로 제한되지 않음
   }
 
   times(multiplier) {
-    return this.amount * multiplier;
+    return new Dollar(this._amount * multiplier);
   }
 
   equals(object) {
-    return this.amount === object.amount;
+    return this._amount === object._amount;
   }
 }

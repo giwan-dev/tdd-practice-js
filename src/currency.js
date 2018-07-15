@@ -6,4 +6,7 @@ export class Dollar {
   times(multiplier) {
     return this.amount * multiplier;
   }
+
+  equals(object) {
+  }
 }

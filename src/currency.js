@@ -12,6 +12,10 @@ export class Money {
     return new Money(amount, 'CHF');
   }
 
+  plus(addend) {
+    return new Money(this._amount + addend._amount, this._currency);
+  }
+
   times(multiplier) {
     return new Money(this._amount * multiplier, this._currency);
   }

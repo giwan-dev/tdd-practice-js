@@ -18,7 +18,7 @@ export class Franc {
   }
 
   times(multiplier) {
-    return new Dollar(this._amount * multiplier);
+    return new Franc(this._amount * multiplier);
   }
 
   equals(object) {

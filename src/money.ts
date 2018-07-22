@@ -10,4 +10,8 @@ export class Money {
   public equals(money: Money): boolean {
     return this.amount === money.amount && this instanceof Dollar === money instanceof Dollar;
   }
+
+  public times(multiplier: number): number {
+    return this.amount * multiplier;
+  }
 }

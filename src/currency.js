@@ -13,7 +13,7 @@ export class Money {
   }
 
   plus(addend) {
-    return new Money(this._amount + addend._amount, this._currency);
+    return new Sum(this, addend);
   }
 
   times(multiplier) {
@@ -29,8 +29,21 @@ export class Money {
   }
 }
 
+class Expression {
+
+}
+
+export class Sum extends Expression {
+  constructor(augend, addend) {
+    super();
+    this.augend = augend;
+    this.addend = addend;
+  }
+}
+
 export class Bank {
   reduce(source, to) {
-    return Money.dollar(10);
+    const amount = source.augend._amount + source.addend._amount;
+    return new Money(amount, to);
   }
 }

@@ -55,7 +55,7 @@ export class Sum extends Expression {
   }
 
   plus(addend) {
-    return null;
+    return new Sum(this, addend);
   }
 }
 

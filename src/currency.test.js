@@ -1,21 +1,21 @@
-import { Dollar, Franc } from './currency';
+import { Dollar, Franc, Money } from './currency';
 
 test('Test multiplication', () => {
-  const five = new Dollar(5);
-  expect(five.times(2)).toEqual(new Dollar(10));
-  expect(five.times(3)).toEqual(new Dollar(15));
+  const five = Money.dollar(5);
+  expect(five.times(2)).toEqual(Money.dollar(10));
+  expect(five.times(3)).toEqual(Money.dollar(15));
 });
 
 test('Test franc multiplication', () => {
-  const five = new Franc(5);
-  expect(five.times(2)).toEqual(new Franc(10));
-  expect(five.times(3)).toEqual(new Franc(15));
+  const five = Money.franc(5);
+  expect(five.times(2)).toEqual(Money.franc(10));
+  expect(five.times(3)).toEqual(Money.franc(15));
 });
 
 test('Test equality', () => {
-  expect(new Dollar(5).equals(new Dollar(5))).toBe(true);
-  expect(new Dollar(5).equals(new Dollar(6))).toBe(false);
-  expect(new Franc(5).equals(new Franc(5))).toBe(true);
-  expect(new Franc(5).equals(new Franc(6))).toBe(false);
-  expect(new Franc(5).equals(new Dollar(5))).toBe(false);
+  expect(Money.dollar(5).equals(Money.dollar(5))).toBe(true);
+  expect(Money.dollar(5).equals(Money.dollar(6))).toBe(false);
+  expect(Money.franc(5).equals(Money.franc(5))).toBe(true);
+  expect(Money.franc(5).equals(Money.franc(6))).toBe(false);
+  expect(Money.franc(5).equals(Money.dollar(5))).toBe(false);
 });

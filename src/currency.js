@@ -28,8 +28,9 @@ export class Money {
     return this._currency;
   }
 
-  reduce(to) {
-    return this;
+  reduce(bank, to) {
+    const rate = bank.rate(this._currency, to);
+    return new Money(this._amount / rate, to);
   }
 }
 
@@ -44,14 +45,36 @@ export class Sum extends Expression {
     this.addend = addend;
   }
 
-  reduce(to) {
+  reduce(bank, to) {
     const amount = this.augend._amount + this.addend._amount;
     return new Money(amount, to);
   }
 }
 
 export class Bank {
+  constructor() {
+    this._rates = [];
+  }
+
   reduce(source, to) {
-    return source.reduce(to);
+    return source.reduce(this, to);
+  }
+
+  addRate(from, to, rate) {
+    this._rates.push({
+      from,
+      to,
+      rate,
+    });
+  }
+
+  rate(from, to) {
+    let targetRate;
+    this._rates.forEach((element) => {
+      if (element.from === from && element.to === to) {
+        targetRate = element.rate;
+      }
+    });
+    return targetRate;
   }
 }

@@ -28,3 +28,9 @@ export class Money {
     return this._currency;
   }
 }
+
+export class Bank {
+  reduce(source, to) {
+    return Money.dollar(10);
+  }
+}

@@ -2,7 +2,7 @@ import { Money } from './money';
 
 test('곱셈 테스트', () => {
   const five = Money.dollar(5);
-  expect(five.times(2)).toBe(10);
+  expect(five.times(2)).toEqual(Money.dollar(10));
 });
 
 test('동일 확인', () => {

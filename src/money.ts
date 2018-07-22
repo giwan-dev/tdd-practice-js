@@ -19,8 +19,8 @@ export class Money {
     return this.amount === money.amount && this.currency === money.currency;
   }
 
-  public times(multiplier: number): number {
-    return this.amount * multiplier;
+  public times(multiplier: number): Money {
+    return new Money(this.amount * multiplier, this.currency);
   }
 
   public plus(money: Money): Money {

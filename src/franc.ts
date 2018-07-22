@@ -1,7 +1,10 @@
-export class Franc {
-  private amount: number;
+import { Money } from "./money";
+
+export class Franc extends Money {
+  protected amount: number;
 
   constructor(amount: number) {
+    super(amount);
     this.amount = amount;
   }
 
@@ -9,7 +12,7 @@ export class Franc {
     return this.amount * multiplier;
   }
 
-  public equals(franc: Franc): boolean {
-    return this.amount === franc.amount;
+  public equals(franc: Money): boolean {
+    return this.amount === franc.amount && this instanceof Franc === franc instanceof Franc;
   }
 }

@@ -27,7 +27,13 @@ export class Money {
 }
 
 export class Dollar extends Money {
+  currency() {
+    return 'USD';
+  }
 }
 
 export class Franc extends Money {
+  currency() {
+    return 'CHF';
+  }
 }

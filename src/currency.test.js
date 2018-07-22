@@ -52,6 +52,11 @@ test('Test reduce money different currency', () => {
   expect(result).toEqual(Money.dollar(1));
 });
 
+test('Test reduce same currency', () => {
+  const bank = new Bank();
+  expect(Money.dollar(5).reduce(bank, 'USD')).toEqual(Money.dollar(5));
+})
+
 test('Test mixed addition', () => {
   const fiveBucks = Money.dollar(5);
   const tenFrancs = Money.franc(10);

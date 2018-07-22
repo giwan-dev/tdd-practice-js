@@ -4,7 +4,7 @@ export class Money {
   }
 
   equals(object) {
-    return this._amount === object._amount;
+    return this._amount === object._amount && this instanceof Dollar === object instanceof Dollar;
   }
 }
 

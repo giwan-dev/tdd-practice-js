@@ -22,4 +22,8 @@ export class Money {
   public times(multiplier: number): number {
     return this.amount * multiplier;
   }
+
+  public plus(money: Money): Money {
+    return new Money(this.amount + money.amount, this.currency);
+  }
 }

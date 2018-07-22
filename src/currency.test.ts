@@ -17,3 +17,8 @@ test('통화 확인', () => {
   const five = Money.dollar(5);
   expect(five.currency).toBe('USD');
 });
+
+test('덧셈 테스트', () => {
+  const five = Money.dollar(5);
+  expect(five.plus(five)).toEqual(Money.dollar(10));
+});

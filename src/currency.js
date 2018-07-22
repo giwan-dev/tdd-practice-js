@@ -5,34 +5,22 @@ export class Money {
   }
 
   static dollar(amount) {
-    return new Dollar(amount, 'USD');
+    return new Money(amount, 'USD');
   }
 
   static franc(amount) {
-    return new Franc(amount, 'CHF');
+    return new Money(amount, 'CHF');
   }
 
   times(multiplier) {
-    if (this instanceof Dollar) {
-      return new Dollar(this._amount * multiplier, 'USD');
-    }
-    if (this instanceof Franc) {
-      return new Franc(this._amount * multiplier, 'CHF');
-    }
-    return null;
+    return new Money(this._amount * multiplier, this._currency);
   }
 
   equals(object) {
-    return this._amount === object._amount && this instanceof Dollar === object instanceof Dollar;
+    return this._amount === object._amount && this._currency === object._currency;
   }
 
   currency() {
     return this._currency;
   }
-}
-
-export class Dollar extends Money {
-}
-
-export class Franc extends Money {
 }

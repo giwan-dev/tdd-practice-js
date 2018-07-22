@@ -1,4 +1,4 @@
-import { Money, Bank } from './currency';
+import { Money, Bank, Sum } from './currency';
 
 test('Test simple addition', () => {
   const five = Money.dollar(5);
@@ -6,6 +6,20 @@ test('Test simple addition', () => {
   const bank = new Bank();
   const reduced = bank.reduce(sum, 'USD');
   expect(reduced).toEqual(Money.dollar(10));
+});
+
+test('Test reduce sum', () => {
+  const sum = new Sum(Money.dollar(3), Money.dollar(4));
+  const bank = new Bank();
+  const result = bank.reduce(sum, 'USD');
+  expect(result).toEqual(Money.dollar(7));
+})
+
+test('Test plus returns sum', () => {
+  const five = Money.dollar(5);
+  const sum = five.plus(five);
+  expect(five).toEqual(sum.augend);
+  expect(five).toEqual(sum.addend);
 });
 
 test('Test multiplication', () => {

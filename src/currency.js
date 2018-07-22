@@ -29,6 +29,10 @@ export class Money {
   }
 
   reduce(bank, to) {
+    if (this._currency === to) {
+      return this;
+    }
+
     const rate = bank.rate(this._currency, to);
     return new Money(this._amount / rate, to);
   }
@@ -46,8 +50,12 @@ export class Sum extends Expression {
   }
 
   reduce(bank, to) {
-    const amount = this.augend._amount + this.addend._amount;
+    const amount = this.augend.reduce(bank, to)._amount + this.addend.reduce(bank, to)._amount;
     return new Money(amount, to);
+  }
+
+  plus(addend) {
+    return null;
   }
 }
 

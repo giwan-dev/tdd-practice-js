@@ -51,3 +51,19 @@ test('Test reduce money different currency', () => {
   const result = bank.reduce(Money.franc(2), 'USD');
   expect(result).toEqual(Money.dollar(1));
 });
+
+test('Test reduce same currency', () => {
+  const bank = new Bank();
+  expect(Money.dollar(5).reduce(bank, 'USD')).toEqual(Money.dollar(5));
+})
+
+test('Test mixed addition', () => {
+  const fiveBucks = Money.dollar(5);
+  const tenFrancs = Money.franc(10);
+  const bank = new Bank();
+
+  bank.addRate('CHF', 'USD', 2);
+  const result = bank.reduce(fiveBucks.plus(tenFrancs), 'USD');
+
+  expect(result).toEqual(Money.dollar(10));
+});

@@ -55,7 +55,11 @@ export class Sum extends Expression {
   }
 
   plus(addend) {
-    return null;
+    return new Sum(this, addend);
+  }
+
+  times(multiplier) {
+    return new Sum(this.augend.times(multiplier), this.addend.times(multiplier));
   }
 }
 

@@ -27,6 +27,10 @@ export class Money {
   currency() {
     return this._currency;
   }
+
+  reduce(to) {
+    return this;
+  }
 }
 
 class Expression {

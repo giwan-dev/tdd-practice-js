@@ -40,7 +40,14 @@ test('Test equality', () => {
   expect(Money.franc(5).equals(Money.dollar(5))).toBe(false);
 });
 
-test('TestCurrency', () => {
+test('Test currency', () => {
   expect(Money.dollar(1).currency()).toBe('USD');
   expect(Money.franc(1).currency()).toBe('CHF');
+});
+
+test('Test reduce money different currency', () => {
+  const bank = new Bank();
+  bank.addRate('CHF', 'USD', 2);
+  const result = bank.reduce(Money.franc(2), 'USD');
+  expect(result).toEqual(Money.dollar(1));
 });

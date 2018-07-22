@@ -1,4 +1,4 @@
-import { Dollar, Franc, Money } from './currency';
+import { Money } from './currency';
 
 test('Test multiplication', () => {
   const five = Money.dollar(5);
